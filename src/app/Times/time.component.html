@@ -1,11 +1,22 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" style="color:white;">Times</a>
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addTimeModal">Adicionar Time
-      <span class="navbar-toggler-icon"></span>
+    <button type="button" class="btn" data-toggle="modal" data-target="#addTimeModal">Adicionar Time
     </button>
-    <input class="form-control" type="text" name="nome" [(ngModel)] ="nome" (ngModelChange)="SearchTime()" placeholder="Procurar time">
-  
+    <input class="form-inline" type="text" name="nome" [(ngModel)] ="nome" (ngModelChange)="SearchTime()" placeholder="Procurar time">
+    <button type="button" class="btn" routerLink=''>Home
+   </button>
   </nav>
+
+  <div class=sidebar>
+      <ul class="list-sidebar">
+         <li class="list-sidebar-item">Futebol</li>
+         <li class="list-sidebar-item">Hockey</li>
+         <li class="list-sidebar-item">Basquete</li>
+         <li class="list-sidebar-item">Volei</li>
+      </ul>
+  </div>
+
+
   <table class="table table-striped table-dark" id="timeTable">
     <thead>
       <tr>
@@ -13,26 +24,28 @@
         <th (click)="sortTime('titulos')" scope="col">Titulos&nbsp;<i class="fa fa-sort"></i></th>
         <th (click)="sortTime('vice')" scope="col">Vices&nbsp;<i class="fa fa-sort"></i></th>
         <th (click)="sortTime('ultimoTitulo')" scope="col">Ultimo Titulo&nbsp;<i class="fa fa-sort"></i></th>
+        <th  scope="col">Editar<i class="fa fa-sort"></i></th>
+        <th  scope="col">Deletar<i class="fa fa-sort"></i></th>
       </tr>
     </thead>
     <tbody>
-      <ng-container *ngFor="let time of times | orderBy: keyTime: reverseSort ">
+     <ng-container *ngFor="let time of times | orderBy: keyTime: reverseSort ">
       <tr>
-        <td><img src={{time.imageUrl}} width="50" height="50">
+        <td><img src={{time.imageUrl}} width="30" height="35">
           {{time.nome}}</td>
         <td>{{time.titulos}}</td>
         <td>{{time.vice}}</td>
         <td>{{time.ultimoTitulo}}</td>
-        <button (click)="onOpenModal(time, 'edit')" type="button" class="btn btn-primary" data-toggle="modal" data-target="#updateTimeModal"> Editar</button>
-        <button (click)="onOpenModal(time, 'delete')" type="button" class="btn btn-primary" data-toggle="modal" data-target="#deleteTimeModal">Delete</button>
+        <td><button (click)="onOpenModal(time, 'edit')" type="button" class="btn" data-toggle="modal" data-target="#updateTimeModal"> Editar</button></td>
+        <td><button (click)="onOpenModal(time, 'delete')" type="button" class="btn" data-toggle="modal" data-target="#deleteTimeModal">Delete</button></td>
       </tr>
-    </ng-container>
+    </ng-container> 
     </tbody>
   </table>
 
-  <script>
 
-  </script>
+
+
 
 
 
@@ -141,7 +154,7 @@
           </div>
           <!--Confirmação e botões-->
           <div class="modal-body">
-             <p>Tem certeza que quer deletar esse time {{deleteTime?.id}}?</p>
+             <p>Tem certeza que quer deletar esse time {{deleteTime?.nome}}?</p>
              <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
                 <button (click)="onDeleteTime(deleteTime.id)" class="btn btn-danger" data-dismiss="modal">Sim</button>

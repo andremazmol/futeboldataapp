@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+    background: rgb(5,87,4);
+    background: linear-gradient(90deg, rgba(5,87,4,1) 35%, rgba(2,166,37,1) 100%);
+}
+
+.sidebar {
+    width: 15%;
+    background: white;
+    height: 80%;
+    position:absolute;
+}
+
+.list-sidebar-item {
+    list-style-type: none;
+    border: 1px solid black;
+}

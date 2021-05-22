@@ -1,0 +1,37 @@
+
+ .navbar {
+     
+        margin-bottom: 2;
+    }
+ .form-inline {
+     position: absolute;
+     right: 5%;
+ }
+
+ .btn {
+    color: rgb(32, 191, 85);
+    background: rgb(36, 36, 35);
+    border: 1px solid rgb(32, 191, 85);
+    
+}
+
+.btn:hover {
+    background: rgb(32, 191, 85);
+    color: rgb(36, 36, 35);
+}
+
+table {
+    position: absolute;
+    margin-left: 20%;
+    width: 60%;
+    border: 2px solid white;
+
+}
+
+th, td {
+    border: 1px solid white;
+}
+
+
+
+

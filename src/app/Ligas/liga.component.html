@@ -1,19 +1,21 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" style="color:white;">Ligas</a>
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addLigaModal">Adicionar Liga
+    <button type="button" class="btn" data-toggle="modal" data-target="#addLigaModal">Adicionar Liga
       <span class="navbar-toggler-icon"></span>
       </button>
-    <!--<input class="form-control" type="text" name="nome" [(ngModel)] ="nome" (ngModelChange)="SearchTime()" placeholder="Procurar time">-->
   </nav>
+  
+  <div class=sidebar>
+  </div>
 
 <div class="container" id="mainContainer">
     <ng-container *ngFor="let liga of ligas | orderBy: keyLiga: reverseSort">
         <ul class="list-group">
-            <li class="list-group-item"><img src={{liga.paisImageUrl}} width="45" height="30">{{liga.nomeLiga}} 
-              <button (click)="onOpenModal(liga, 'edit')" type="button" class="btn btn-primary" data-toggle="modal" data-target="#updateTimeModal"> Editar</button>
-              <button (click)="onOpenModal(liga, 'delete')" type="button" class="btn btn-primary" data-toggle="modal" data-target="#updateTimeModal"> Deletar</button>
+            <li class="list-group-item"><img src={{liga.paisImageUrl}} width="45" height="30"> 
+              <button (click)="onOpenModal(liga, 'edit')" type="button" class="btn" data-toggle="modal" data-target="#updateTimeModal"> Editar</button>
+              <button (click)="onOpenModal(liga, 'delete')" type="button" class="btn" data-toggle="modal" data-target="#updateTimeModal"> Deletar</button>
             </li>
-            <button type="button" routerLink="/times/all/{{liga.ligaCode}}" class="btn btn-primary">Ir
+            <button type="button" routerLink="/times/all/{{liga.ligaCode}}" class="btn">{{liga.nomeLiga}}
             </button>
         </ul>
     </ng-container>
