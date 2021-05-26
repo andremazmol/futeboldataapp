@@ -21,6 +21,10 @@ import { Ligas } from './Ligas';
           return this.http.get<Ligas[]>(`${this.apiServerUrl}/ligas/all`);
       }
 
+      public getLigaByEsporte(ligaEsporte: String): Observable<Ligas[]> {
+          return this.http.get<Ligas[]>(`${this.apiServerUrl}/ligas/all/${ligaEsporte}`)
+      }
+
       public addNewLiga(liga: Ligas): Observable<Ligas> {
           return this.http.post<Ligas>(`${this.apiServerUrl}/ligas/add`, liga);
       }

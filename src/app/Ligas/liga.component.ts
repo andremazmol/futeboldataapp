@@ -2,6 +2,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { LigaService } from './liga.service';
 import { Ligas } from './Ligas';
 
@@ -20,10 +21,10 @@ import { Ligas } from './Ligas';
     keyLiga: String;
     public reverseSort: boolean = true;
 
-    constructor(private ligaService: LigaService) {}
+    constructor(private ligaService: LigaService, private router: ActivatedRoute) {}
 
     ngOnInit(): void {
-        this.getAllLigas();
+        this.getLigaByEsporte(this.router.snapshot.params.esporte)
         this.sortLiga('paisLiga')
     }
 
@@ -36,11 +37,20 @@ import { Ligas } from './Ligas';
         )
     }
 
+    public getLigaByEsporte(ligaEsporte:String): void {
+        this.ligaService.getLigaByEsporte(ligaEsporte).subscribe(
+            (response: Ligas[]) => {
+                this.ligas = response
+                console.log(this.ligas);
+            }
+        )
+    }
+
     public onAddLiga(addFormLiga: NgForm): void {
         this.ligaService.addNewLiga(addFormLiga.value).subscribe(
             (response: Ligas) => {
                 console.log(response)
-                this.getAllLigas();
+                this.getLigaByEsporte(this.router.snapshot.params.esporte)
             },
             (error: HttpErrorResponse) => {
                 alert(error.message);
@@ -52,7 +62,7 @@ import { Ligas } from './Ligas';
         this.ligaService.updateLiga(liga).subscribe(
             (response: Ligas) => {
                 console.log(response)
-                this.getAllLigas();
+                this.getLigaByEsporte(this.router.snapshot.params.esporte)
             },
             (error: HttpErrorResponse) => {
                 alert(error.message);
@@ -64,7 +74,7 @@ import { Ligas } from './Ligas';
         this.ligaService.deleteLiga(ligaId).subscribe(
             (response: void) => {
                 console.log(response);
-                this.getAllLigas();
+                this.getLigaByEsporte(this.router.snapshot.params.esporte)
             },
             (error: HttpErrorResponse) => {
                 alert(error.message);
@@ -99,6 +109,7 @@ import { Ligas } from './Ligas';
         this.reverseSort = !this.reverseSort;
 
     }
+
 
 
   }

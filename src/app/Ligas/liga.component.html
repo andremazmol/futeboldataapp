@@ -5,17 +5,19 @@
       </button>
   </nav>
   
-  <div class=sidebar>
-  </div>
+  <app-sidebar></app-sidebar>
 
 <div class="container" id="mainContainer">
     <ng-container *ngFor="let liga of ligas | orderBy: keyLiga: reverseSort">
         <ul class="list-group">
-            <li class="list-group-item"><img src={{liga.paisImageUrl}} width="45" height="30"> 
+            <li class="list-group-item"> <img src={{liga.paisImageUrl}} width="45" height="30"> País: {{liga.paisLiga}}
               <button (click)="onOpenModal(liga, 'edit')" type="button" class="btn" data-toggle="modal" data-target="#updateTimeModal"> Editar</button>
               <button (click)="onOpenModal(liga, 'delete')" type="button" class="btn" data-toggle="modal" data-target="#updateTimeModal"> Deletar</button>
             </li>
-            <button type="button" routerLink="/times/all/{{liga.ligaCode}}" class="btn">{{liga.nomeLiga}}
+            <li class="list-group-item">Tipo: {{liga.tipoLiga}}</li>
+            <li class="list-group-item">Primeira Liga: {{liga.primeiraLiga}}</li>
+            <li class="list-group-item">Ultimo Campeão: {{liga.ultimoCampeao}}</li>
+            <button type="button" routerLink="/times/all/{{liga.ligaCode}}" class="btn"> Visitar {{liga.nomeLiga}} ->
             </button>
         </ul>
     </ng-container>
@@ -42,6 +44,10 @@
               <input type="text" ngModel name="ligaCode" class="form-control" id="ligaCodeForm" placeholder="Codigo" required>
            </div>
            <div class="form-group">
+            <label for="ligaEsporte">Esporte da liga</label>
+            <input type="text" ngModel name="ligaEsporte" class="form-control" id="ligaEsporteForm" placeholder="Esporte" required>
+         </div>
+           <div class="form-group">
               <label for="paisLiga">Pais</label>
               <input type="text" ngModel name="paisLiga" class="form-control" id="paisLigaForm" placeholder="Pais" required>
            </div>
@@ -49,6 +55,18 @@
               <label for="paisImageUrl">Bandeira</label>
               <input type="text" ngModel name="paisImageUrl" class="form-control" id="paisImageUrlForm" placeholder="Bandeira" required>
            </div>
+           <div class="form-group">
+            <label for="primeiraLiga">Primeira Liga</label>
+            <input type="text" ngModel name="primeiraLiga" class="form-control" id="primeiraLigaForm" placeholder="Primeira Liga" required>
+         </div>
+         <div class="form-group">
+            <label for="tipoLiga">Tipo da Liga</label>
+            <input type="text" ngModel name="tipoLiga" class="form-control" id="tipoLigaForm" placeholder="Tipo da Liga" required>
+         </div>
+         <div class="form-group">
+            <label for="ultimoCampeao">Ultimo Campeao</label>
+            <input type="text" ngModel name="ultimoCampeao" class="form-control" id="ultimoCampeaoForm" placeholder="Ultimo Campeao" required>
+         </div>
           <div class="modal-footer">
              <button type="button" id="add-Form" class="btn btn-secondary" data-dismiss="modal">Close</button>
              <button  (click)="onAddLiga(addFormLiga)"  type="submit" class="btn btn-primary" data-dismiss="modal" >Save changes</button>
@@ -81,6 +99,10 @@
                  <input type="text" ngModel="{{editLiga?.ligaCode}}" name="ligaCode" class="form-control" id="ligaCodeEdit" placeholder="Codigo">
               </div>
               <div class="form-group">
+               <label for="ligaEsporte">Esporte da Liga</label>
+               <input type="text" ngModel="{{editLiga?.ligaEsporte}}" name="ligaEsporte" class="form-control" id="ligaEsporteEdit" placeholder="Esporte">
+               </div>
+              <div class="form-group">
                  <label for="paisLiga">Pais</label>
                  <input  type="text" ngModel="{{editLiga?.paisLiga}}" name="paisLiga" class="form-control" id="paisLigaEdit" placeholder="Pais">
               </div>
@@ -88,6 +110,18 @@
                  <label for="paisImageUrl">Bandeira</label>
                  <input type="text" ngModel="{{editLiga?.paisImageUrl}}" name="paisImageUrl" class="form-control" id="paisImageUrlEdit"  placeholder="Bandeira">
               </div>
+              <div class="form-group">
+               <label for="primeiraLiga">Primeira Liga</label>
+               <input type="text" ngModel="{{editLiga?.primeiraLiga}}" name="primeiraLiga" class="form-control" id="primeiraLigaEdit"  placeholder="Primeira Liga">
+               </div>
+               <div class="form-group">
+                  <label for="tipoLiga">Tipo da Liga</label>
+                  <input type="text" ngModel="{{editLiga?.tipoLiga}}" name="tipoLiga" class="form-control" id="tipoLigaEdit"  placeholder="Tipo da Liga">
+               </div>
+               <div class="form-group">
+                  <label for="ultimoCampeao">Ultimo Campeao</label>
+                  <input type="text" ngModel="{{editLiga?.ultimoCampeao}}" name="ultimoCampeao" class="form-control" id="ultimoCampeaoEdit"  placeholder="Ultimo Campeao">
+               </div>
             
               
               <div class="modal-footer">

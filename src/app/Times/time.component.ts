@@ -19,10 +19,12 @@ import { Times } from './Times';
       public keyTime: string;
       public reverseSort: boolean = false;
 
+
+
       constructor(private timeService: TimeService, private router: ActivatedRoute) {}
 
     ngOnInit(): void {
-        console.log(this.router.snapshot.params.league);
+        console.log(this.router.snapshot.params);
         this.getTimeByLeague(this.router.snapshot.params.league);
         this.sortTime('titulos');
         
@@ -114,7 +116,7 @@ import { Times } from './Times';
 
     public SearchTime() {
         if (this.nome == "") {
-            this.getAllTimes();
+            this.getTimeByLeague(this.router.snapshot.params.league);
         }
         else {
             this.times = this.times.filter(response =>{
@@ -126,6 +128,10 @@ import { Times } from './Times';
         this.keyTime = keyTime;
         this.reverseSort = !this.reverseSort;
 
+    }
+
+    public log() {
+        console.log("teste")
     }
 
 
