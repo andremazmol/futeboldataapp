@@ -1,7 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+    --green-gradient: linear-gradient(90deg, rgba(5,87,4,1) 15%, rgba(2,166,37,1) 100%);
+    --orange-gradient: linear-gradient(90deg, rgba(255,98,0,1) 15%, rgba(250,130,44,1) 100%);
+    --blue-gradient: linear-gradient(90deg, rgba(0,7,201,1) 15%, rgba(64,71,255,1) 100%);
+    --yellowgreen-gradient: linear-gradient(90deg, rgba(148,199,0,1) 15%, rgba(206,255,64,1) 100%);
+    --red-gradient: linear-gradient(90deg, rgba(135,0,0,1) 15%, rgba(196,0,0,1) 100%);
+    --darkorange-gradient: linear-gradient(90deg, rgba(120,46,0,1) 15%, rgba(175,67,0,1) 100%);
+    --cyan-gradient: linear-gradient(90deg, rgba(0,139,140,1) 15%, rgba(0,208,209,1) 100%);
+    --pink-gradient: linear-gradient(90deg, rgba(254,0,47,1) 15%, rgba(255,73,107,1) 100%);
+    --button-gradient: linear-gradient(90deg, rgba(255,255,255,1) 15%, rgba(196,196,196,1) 100%);
+    --hover-gradient: linear-gradient(90deg, rgba(196,196,196,1) 15%, rgba(255,255,255,1) 100%);
+}
+
 body {
-    background: rgb(5,87,4);
-    background: linear-gradient(90deg, rgba(5,87,4,1) 35%, rgba(2,166,37,1) 100%);
+    background: var(--green-gradient);
 }
 
 .sidebar {
@@ -15,8 +27,8 @@ body {
     margin-bottom: 5%;
     padding: 0;
     align-items: center;
-    border-top: 1px solid rgb(32, 191, 85);
-    border-bottom: 1px solid rgb(32, 191, 85);
+    border-top: 1px solid whitesmoke;
+    border-bottom: 1px solid whitesmoke;
 }
 
 .list-sidebar-item {
@@ -24,16 +36,23 @@ body {
     list-style-type: none;
     text-align: center;
     padding: 10px;
-    color: rgb(32, 191, 85);
+    color: whitesmoke;
     background: rgb(36, 36, 35);
 }
 
 .list-sidebar-item:hover {
-    background: rgb(32, 191, 85);
+    background: whitesmoke;
     color: rgb(36, 36, 35);
 }
 
 .header-sidebar {
-    color: rgb(32, 191, 85);
+    color: whitesmoke;
     text-align: center;
+}
+
+
+
+.list-group-item {
+    background: rgb(36, 36, 35);
+    color: whitesmoke;
 }

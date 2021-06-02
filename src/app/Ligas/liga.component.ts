@@ -20,12 +20,14 @@ import { Ligas } from './Ligas';
     deleteLiga: Ligas;
     keyLiga: String;
     public reverseSort: boolean = true;
+    public pageColor: String;
 
     constructor(private ligaService: LigaService, private router: ActivatedRoute) {}
 
     ngOnInit(): void {
         this.getLigaByEsporte(this.router.snapshot.params.esporte)
         this.sortLiga('paisLiga')
+        this.changeColor();
     }
 
     public getAllLigas(): void {
@@ -108,6 +110,56 @@ import { Ligas } from './Ligas';
         this.keyLiga = keyLiga;
         this.reverseSort = !this.reverseSort;
 
+    }
+
+    public changeColor() {
+        let docStyle = getComputedStyle(document.documentElement);
+        switch(this.router.snapshot.params.esporte) {
+            case 'Futebol': {
+                document.body.style.background =  docStyle.getPropertyValue('--green-gradient');
+                this.pageColor = 'green';
+                break;
+            }
+            case 'Hockey': {
+                document.body.style.background = docStyle.getPropertyValue('--blue-gradient');
+                this.pageColor = 'steelblue';
+                break;
+            }
+            case 'Basquete': {
+                document.body.style.background = docStyle.getPropertyValue('--orange-gradient');
+                this.pageColor = 'orange';
+                break;
+
+            }
+            case 'Tenis': {
+                document.body.style.background = docStyle.getPropertyValue('--yellowgreen-gradient');
+                this.pageColor = 'yellowgreen';
+                break;
+
+            }
+            case 'Dota2': {
+                document.body.style.background = docStyle.getPropertyValue('--red-gradient');
+                this.pageColor = 'tomato';
+                break;
+
+            }
+            case 'CSGO': {
+                document.body.style.background = docStyle.getPropertyValue('--darkorange-gradient');
+                break;
+
+            }
+            case 'LOL': {
+                document.body.style.background = docStyle.getPropertyValue('--cyan-gradient');
+                break;
+
+            }
+            case 'Valorant': {
+                document.body.style.background = docStyle.getPropertyValue('--pink-gradient');
+                break;
+
+            }
+
+        }
     }
 
 

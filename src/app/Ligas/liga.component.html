@@ -1,18 +1,19 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" style="color:white;">Ligas</a>
     <button type="button" class="btn" data-toggle="modal" data-target="#addLigaModal">Adicionar Liga
-      <span class="navbar-toggler-icon"></span>
       </button>
   </nav>
   
-  <app-sidebar></app-sidebar>
+  <app-sidebar>
+  </app-sidebar>
 
-<div class="container" id="mainContainer">
+<div class="container" id="mainContainer" >
     <ng-container *ngFor="let liga of ligas | orderBy: keyLiga: reverseSort">
-        <ul class="list-group">
+        <ul class="list-group" [style.background]="'orange'">
             <li class="list-group-item"> <img src={{liga.paisImageUrl}} width="45" height="30"> País: {{liga.paisLiga}}
-              <button (click)="onOpenModal(liga, 'edit')" type="button" class="btn" data-toggle="modal" data-target="#updateTimeModal"> Editar</button>
-              <button (click)="onOpenModal(liga, 'delete')" type="button" class="btn" data-toggle="modal" data-target="#updateTimeModal"> Deletar</button>
+              <button (click)="onOpenModal(liga, 'edit')" 
+              type="button" class="btn" data-toggle="modal" data-target="#updateTimeModal"> Editar</button>
+              <button (click)="onOpenModal(liga, 'delete')"  type="button" class="btn" data-toggle="modal" data-target="#updateTimeModal"> Deletar</button>
             </li>
             <li class="list-group-item">Tipo: {{liga.tipoLiga}}</li>
             <li class="list-group-item">Primeira Liga: {{liga.primeiraLiga}}</li>

@@ -1,17 +1,25 @@
+
+
 .btn {
-    color: rgb(32, 191, 85);
-    background: rgb(36, 36, 35);
-    border: 1px solid rgb(32, 191, 85);
+    color: rgb(36, 36, 35);
+    background: var(--button-gradient);
+    border: 1px solid;
+    border-color: gray;
     
 }
 
 .btn:hover {
-    background: rgb(32, 191, 85);
-    color: rgb(36, 36, 35);
+    background: var(--hover-gradient);
     
 }
 
 .container {
     margin-left: 15%;
     width: 70%;
+}
+
+.list-group-item {
+    background: rgb(36, 36, 35);
+    color: whitesmoke;
+    
 }
